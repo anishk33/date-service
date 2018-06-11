@@ -23,14 +23,17 @@ public class DateTimeUtils {
     }
 
     public static DateTime toDateTime(final ZonedDateTime zonedDateTime) {
-        return new DateTime(date(zonedDateTime), time(zonedDateTime), dateTime(zonedDateTime), timezoneName(zonedDateTime));
+        return zonedDateTime == null ? null :
+                new DateTime(date(zonedDateTime), time(zonedDateTime), dateTime(zonedDateTime), timezoneName(zonedDateTime));
     }
 
     public static DateTime toDate(final ZonedDateTime zonedDateTime) {
-        return new DateTime(date(zonedDateTime), null, null, timezoneName(zonedDateTime));
+        return zonedDateTime == null ? null :
+                new DateTime(date(zonedDateTime), null, null, timezoneName(zonedDateTime));
     }
 
     public static DateTime toTime(final ZonedDateTime zonedDateTime) {
-        return new DateTime(null, time(zonedDateTime), null, timezoneName(zonedDateTime));
+        return zonedDateTime == null ? null :
+                new DateTime(null, time(zonedDateTime), null, timezoneName(zonedDateTime));
     }
 }
