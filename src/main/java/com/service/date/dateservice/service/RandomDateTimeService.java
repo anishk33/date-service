@@ -53,23 +53,23 @@ public class RandomDateTimeService {
 
     private ZonedDateTime operateHours(final ZonedDateTime zonedDateTime) {
         if (RandomOperation.ADD == getRandomOperation()) {
-            return zonedDateTime.plusDays(random(2, 13));
+            return zonedDateTime.plusHours(random(2, 13));
         }
-        return zonedDateTime.minusDays(random(2, 13));
+        return zonedDateTime.minusHours(random(2, 13));
     }
 
     private ZonedDateTime operateMinutes(final ZonedDateTime zonedDateTime) {
         if (RandomOperation.ADD == getRandomOperation()) {
-            return zonedDateTime.plusDays(random(2, 61));
+            return zonedDateTime.plusMinutes(random(2, 61));
         }
-        return zonedDateTime.minusDays(random(2, 61));
+        return zonedDateTime.minusMinutes(random(2, 61));
     }
 
     private ZonedDateTime operateSeconds(final ZonedDateTime zonedDateTime) {
         if (RandomOperation.ADD == getRandomOperation()) {
-            return zonedDateTime.plusDays(random(2, 61));
+            return zonedDateTime.plusSeconds(random(2, 61));
         }
-        return zonedDateTime.minusDays(random(2, 61));
+        return zonedDateTime.minusSeconds(random(2, 61));
     }
 
     private int random(int digits, int mod) {

@@ -3,6 +3,7 @@ package com.service.date.dateservice.controllers;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.TEXT_PLAIN_VALUE;
 
+import java.util.Set;
 import com.service.date.dateservice.models.DateTime;
 import com.service.date.dateservice.service.DateTimeService;
 import com.service.date.dateservice.service.RandomDateTimeService;
@@ -16,6 +17,11 @@ public class DateTimeController {
 
     @Autowired private DateTimeService dateTimeService;
     @Autowired private RandomDateTimeService randomDateTimeService;
+
+    @RequestMapping(value = "/datetimes", produces = APPLICATION_JSON_VALUE)
+    public Set<DateTime> getDateTimesDefault() {
+        return dateTimeService.getDateTimesNow();
+    }
 
     @RequestMapping(value = "/datetime", produces = APPLICATION_JSON_VALUE)
     public DateTime getDateTimeDefault(@RequestParam(value = "tz", required = false) String timezone) {

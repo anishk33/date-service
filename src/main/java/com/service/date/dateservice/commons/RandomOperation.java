@@ -20,6 +20,6 @@ public enum RandomOperation {
 
     public static RandomOperation getRandomOperation() {
         int value = (int) (Math.random() * 10) % 2;
-        return RandomOperation.fromValue(value);
+        return fromValue(value);
     }
 }
