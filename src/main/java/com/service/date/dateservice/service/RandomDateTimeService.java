@@ -1,6 +1,9 @@
 package com.service.date.dateservice.service;
 
 import static com.service.date.dateservice.commons.DateTimeUtils.getZonedDateTime;
+import static com.service.date.dateservice.commons.DateTimeUtils.toDateTime;
+import static com.service.date.dateservice.commons.DateTimeUtils.toDate;
+import static com.service.date.dateservice.commons.DateTimeUtils.toTime;
 import static com.service.date.dateservice.commons.RandomOperation.getRandomOperation;
 
 import com.service.date.dateservice.commons.DateTimeStrings;
@@ -14,17 +17,41 @@ import java.time.ZonedDateTime;
 public class RandomDateTimeService {
 
     public DateTime getRandomDateTime(final String timezone) {
-        return new DateTime(operate(getZonedDateTime(timezone)));
+        return toDateTime(operate(getZonedDateTime(timezone)));
     }
 
     public String getRandomDateTimeString(final String timezone) {
         return DateTimeStrings.zonedDateTime(operate(getZonedDateTime(timezone)));
     }
 
+    public DateTime getRandomDate(final String timezone) {
+        return toDate(operateDate(getZonedDateTime(timezone)));
+    }
+
+    public String getRandomDateString(final String timezone) {
+        return DateTimeStrings.date(operateDate(getZonedDateTime(timezone)));
+    }
+
+    public DateTime getRandomTime(final String timezone) {
+        return toTime(operateTime(getZonedDateTime(timezone)));
+    }
+
+    public String getRandomTimeString(final String timezone) {
+        return DateTimeStrings.time(operateTime(getZonedDateTime(timezone)));
+    }
+
     private ZonedDateTime operate(ZonedDateTime zonedDateTime) {
+        zonedDateTime = operateDate(zonedDateTime);
+        return operateTime(zonedDateTime);
+    }
+
+    private ZonedDateTime operateDate(ZonedDateTime zonedDateTime) {
         zonedDateTime = operateDays(zonedDateTime);
         zonedDateTime = operateMonths(zonedDateTime);
-        zonedDateTime = operateYears(zonedDateTime);
+        return operateYears(zonedDateTime);
+    }
+
+    private ZonedDateTime operateTime(ZonedDateTime zonedDateTime) {
         zonedDateTime = operateHours(zonedDateTime);
         zonedDateTime = operateMinutes(zonedDateTime);
         return operateSeconds(zonedDateTime);

@@ -1,6 +1,7 @@
 package com.service.date.dateservice.service;
 
 import static com.service.date.dateservice.commons.DateTimeUtils.getZonedDateTime;
+import static com.service.date.dateservice.commons.DateTimeUtils.toDateTime;
 
 import java.time.ZoneId;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class DateTimeService {
     }
 
     public DateTime getDateTimeNow(final String timezone) {
-        return new DateTime(getZonedDateTime(timezone));
+        return toDateTime(getZonedDateTime(timezone));
     }
 
     public String getDateTimeStringNow(final String timezone) {

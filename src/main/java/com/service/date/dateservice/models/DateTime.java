@@ -1,13 +1,6 @@
 package com.service.date.dateservice.models;
 
-import static com.service.date.dateservice.commons.DateTimeStrings.date;
-import static com.service.date.dateservice.commons.DateTimeStrings.dateTime;
-import static com.service.date.dateservice.commons.DateTimeStrings.time;
-import static com.service.date.dateservice.commons.DateTimeStrings.timezoneName;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
-
-import java.time.ZonedDateTime;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DateTime {
@@ -16,10 +9,6 @@ public class DateTime {
     private String time;
     private String datetime;
     private String timezone;
-
-    public DateTime(final ZonedDateTime zonedDateTime) {
-        this(date(zonedDateTime), time(zonedDateTime), dateTime(zonedDateTime), timezoneName(zonedDateTime));
-    }
 
     public DateTime(final String date, final String time) {
         this(date, time, null, null);
