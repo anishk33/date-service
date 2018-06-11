@@ -11,23 +11,23 @@ import static java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME;
 public final class DateTimeStrings {
 
     public static String date(final ZonedDateTime zonedDateTime) {
-        return zonedDateTime.format(ISO_LOCAL_DATE);
+        return zonedDateTime == null ? null : zonedDateTime.format(ISO_LOCAL_DATE);
     }
 
     public static String time(final ZonedDateTime zonedDateTime) {
-        return zonedDateTime.format(ISO_LOCAL_TIME);
+        return zonedDateTime == null ? null : zonedDateTime.format(ISO_LOCAL_TIME);
     }
 
     public static String dateTime(final ZonedDateTime zonedDateTime) {
-        return zonedDateTime.format(ISO_LOCAL_DATE_TIME);
+        return zonedDateTime == null ? null : zonedDateTime.format(ISO_LOCAL_DATE_TIME);
     }
 
     public static String timezoneName(final ZonedDateTime zonedDateTime) {
-        return TimeZone.getTimeZone(zonedDateTime.getZone()).getDisplayName();
+        return zonedDateTime == null ? null : TimeZone.getTimeZone(zonedDateTime.getZone()).getDisplayName();
     }
 
     public static String zonedDateTime(final ZonedDateTime zonedDateTime) {
-        return zonedDateTime.format(ISO_ZONED_DATE_TIME);
+        return zonedDateTime == null ? null : zonedDateTime.format(ISO_ZONED_DATE_TIME);
     }
 
 }
