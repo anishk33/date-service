@@ -17,6 +17,11 @@ public class DateTimeController {
     @Autowired private DateTimeService dateTimeService;
     @Autowired private RandomDateTimeService randomDateTimeService;
 
+    @RequestMapping(value = "/datetimes", produces = APPLICATION_JSON_VALUE)
+    public Set<DateTime> getDateTimesDefault() {
+        return dateTimeService.getDateTimesNow();
+    }
+
     @RequestMapping(value = "/datetime", produces = APPLICATION_JSON_VALUE)
     public DateTime getDateTimeDefault(@RequestParam(value = "tz", required = false) String timezone) {
         return dateTimeService.getDateTimeNow(timezone);
